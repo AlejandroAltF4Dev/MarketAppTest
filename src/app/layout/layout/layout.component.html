@@ -11,7 +11,8 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/markets" routerLinkActive="text-blue-800">
         <mat-icon mat-list-icon>store</mat-icon>
-        Markets</a>
+        Markets</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -26,6 +27,13 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Markets app</span>
+      <a
+        mat-stroked-button
+        href="http://173.212.193.40:5486/swagger"
+        class="ml-auto"
+        target="_blank"
+        >Check docs</a
+      >
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

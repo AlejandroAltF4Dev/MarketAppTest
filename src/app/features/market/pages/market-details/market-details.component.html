@@ -26,36 +26,36 @@
       </mat-card-header>
       <mat-card-content>
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-          <app-details-item
-            title="Symbol"
-          >{{market.symbol}}</app-details-item>
-          <app-details-item
-            title="Country"
-          >{{market.country}}</app-details-item>
-          <app-details-item
-            title="Industry"
-          >{{market.industry}}</app-details-item>
-          <app-details-item
-            title="IPO Year"
-          >{{market.ipoYear | currency}}</app-details-item>
-          <app-details-item
-            title="Market Cap"
-          >{{market.marketCap | currency}}</app-details-item>
-          <app-details-item
-            title="Sector"
-          >{{market.sector}}</app-details-item>
-          <app-details-item
-            title="Volume"
-          >{{market.volume}}</app-details-item>
-          <app-details-item
-            title="Net Change"
-          >{{market.netChange}}</app-details-item>
-          <app-details-item
-            title="Net change Percent"
-          >{{market.netChangePercent}} %</app-details-item>
-          <app-details-item
-            title="Last Price"
-          >{{market.lastPrice | currency}}</app-details-item>
+          <app-details-item title="Symbol">{{
+            market.symbol || "N/A"
+          }}</app-details-item>
+          <app-details-item title="Country">{{
+            market.country || "N/A"
+          }}</app-details-item>
+          <app-details-item title="Industry">{{
+            market.industry || "N/A"
+          }}</app-details-item>
+          <app-details-item title="IPO Year">{{
+            market.ipoYear ? (market.ipoYear | currency) : "N/A"
+          }}</app-details-item>
+          <app-details-item title="Market Cap">{{
+            market.marketCap ? (market.marketCap | currency) : "N/A"
+          }}</app-details-item>
+          <app-details-item title="Sector">{{
+            market.sector || "N/A"
+          }}</app-details-item>
+          <app-details-item title="Volume">{{
+            market.volume || "N/A"
+          }}</app-details-item>
+          <app-details-item title="Net Change">{{
+            market.netChange || "N/A"
+          }}</app-details-item>
+          <app-details-item title="Net change Percent">{{
+            market.netChangePercent ? market.netChangePercent + " %" : "N/A"
+          }}</app-details-item>
+          <app-details-item title="Last Price">{{
+            market.lastPrice ? (market.lastPrice | currency) : "N/A"
+          }}</app-details-item>
         </div>
       </mat-card-content>
     </mat-card>
