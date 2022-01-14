@@ -1,0 +1,63 @@
+<div class="container mx-auto">
+  <div class="py-4 flex items-center justify-between">
+    <div class="flex items-center">
+      <a mat-icon-button routerLink="/markets">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <app-page-title title="Market details"></app-page-title>
+    </div>
+    <button
+      class="ml-auto"
+      mat-button
+      color="primary"
+      [routerLink]="['/markets/edit', market.id]"
+    >
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+  </div>
+  <div class="flex">
+    <mat-card class="w-full">
+      <mat-card-header>
+        <mat-card-title>{{ market.name }}</mat-card-title>
+        <mat-card-subtitle>{{
+          market.createdAt | date: "dd/MM/yyyy"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+          <app-details-item
+            title="Symbol"
+          >{{market.symbol}}</app-details-item>
+          <app-details-item
+            title="Country"
+          >{{market.country}}</app-details-item>
+          <app-details-item
+            title="Industry"
+          >{{market.industry}}</app-details-item>
+          <app-details-item
+            title="IPO Year"
+          >{{market.ipoYear | currency}}</app-details-item>
+          <app-details-item
+            title="Market Cap"
+          >{{market.marketCap | currency}}</app-details-item>
+          <app-details-item
+            title="Sector"
+          >{{market.sector}}</app-details-item>
+          <app-details-item
+            title="Volume"
+          >{{market.volume}}</app-details-item>
+          <app-details-item
+            title="Net Change"
+          >{{market.netChange}}</app-details-item>
+          <app-details-item
+            title="Net change Percent"
+          >{{market.netChangePercent}} %</app-details-item>
+          <app-details-item
+            title="Last Price"
+          >{{market.lastPrice | currency}}</app-details-item>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

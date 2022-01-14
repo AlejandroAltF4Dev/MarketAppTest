@@ -1,0 +1,76 @@
+<div class="mat-elevation-z8 w-full">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <table mat-table [dataSource]="markets" class="w-full" matSort (matSortChange)="sorted.emit($event)">
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <p class="max-w-lg truncate">
+          {{ element.name }}
+        </p>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+      <td mat-cell *matCellDef="let element">{{ element.country || 'N/A' }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created at</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.createdAt | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="manage">
+      <th mat-header-cell *matHeaderCellDef>Manage</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="flex items-center">
+          <button
+            mat-icon-button
+            [routerLink]="['details', element.id]"
+            matTooltip="Details"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            [routerLink]="['edit', element.id]"
+            matTooltip="Edit"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            matTooltip="Delete"
+            (click)="deleteClicked.emit(element)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [length]="total"
+    [pageSize]="10"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[10, 30, 50]"
+    [showFirstLastButtons]="true"
+  ></mat-paginator>
+</div>

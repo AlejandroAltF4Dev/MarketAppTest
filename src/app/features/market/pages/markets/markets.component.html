@@ -1,0 +1,37 @@
+<div class="container mx-auto p-4">
+  <div class="flex items-center justify-between py-4">
+    <app-page-title title="Market list"></app-page-title>
+    <div class="flex space-x-1">
+      <button mat-stroked-button (click)="clearFilters()">Clear filters</button>
+      <button mat-flat-button  color="primary" routerLink="create">
+        <mat-icon class="">add_circle</mat-icon>
+        Create market
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="filters" class="flex flex-col md:flex-row flex-wrap -mx-2 md:items-center">
+    <mat-form-field class="m-2">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput formControlName="symbol" />
+    </mat-form-field>
+    <mat-form-field class="m-2">
+      <mat-label>Symbol</mat-label>
+      <input type="text" matInput formControlName="symbol" />
+    </mat-form-field>
+    <mat-form-field class="m-2">
+      <mat-label>Country</mat-label>
+      <input type="text" matInput formControlName="country" />
+    </mat-form-field>
+  </form>
+  <ng-container *ngIf="markets$ | async as markets">
+    <app-markets-table
+      [markets]="markets"
+      [total]="total"
+      [pageIndex]="filters.get('page').value - 1"
+      (paged)="paginate($event)"
+      [isLoading]="isLoading$ | async"
+      (sorted)="sort($event)"
+      (deleteClicked)="deleteMarket($event)"
+    ></app-markets-table>
+  </ng-container>
+</div>

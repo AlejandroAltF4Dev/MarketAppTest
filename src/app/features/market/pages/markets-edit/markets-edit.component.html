@@ -1,0 +1,14 @@
+<div class="container mx-auto">
+  <div class="py-4">
+    <div class="flex items-center">
+      <a mat-icon-button routerLink="/markets">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <app-page-title title="Edit market"></app-page-title>
+    </div>
+    <app-markets-form
+      (saved)="updateMarket($event)"
+      [market]="market"
+    ></app-markets-form>
+  </div>
+</div>
