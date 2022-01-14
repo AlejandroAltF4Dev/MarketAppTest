@@ -1,6 +1,14 @@
 # Markets
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Markets App by AltF4Dev.
+#Stack:
+###### Framework/UI library: Angular / Angular material v13 
+######  Css Utilities: TailwindCss
+######  State Management: Akita
+###### Side Effects library: Effects Ng.
+###### NestJsX RequestQueryBuilder for proper integration with NestJsX filters.
+
 
 ## Development server
 
